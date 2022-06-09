@@ -36,27 +36,12 @@ resource "google_compute_region_network_endpoint_group" "default" {
   provider = google-beta
 }
 
-
-resource "google_compute_http_health_check" "default" {
-  name               = "${var.name}-healthcheck"
-  request_path       = var.health_check.request_path
-  check_interval_sec = var.health_check.check_interval_sec
-  timeout_sec        = var.health_check.timeout_sec
-
-  project = var.project
-}
-
-
 resource "google_compute_backend_service" "default" {
   name = "${var.name}-backend"
 
   protocol    = "HTTP"
   port_name   = "http"
   timeout_sec = "30"
-
-  health_checks = [
-    google_compute_http_health_check.default.id
-  ]
 
   dynamic "backend" {
     for_each = google_compute_region_network_endpoint_group.default

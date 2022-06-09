@@ -15,20 +15,6 @@ variable "network_endpoint_groups" {
   default     = []
 }
 
-variable "health_check" {
-  type = object({
-    request_path       = string
-    check_interval_sec = number
-    timeout_sec        = number
-  })
-  description = "Health check configuration"
-  default = {
-    request_path       = "/"
-    check_interval_sec = 5
-    timeout_sec        = 5
-  }
-}
-
 variable "project" {
   type        = string
   description = "Project where the Cloud Run resources are being created"

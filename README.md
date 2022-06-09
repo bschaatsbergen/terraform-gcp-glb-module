@@ -65,7 +65,6 @@ No modules.
 | [google_compute_global_address.default](https://registry.terraform.io/providers/hashicorp/google/4.22.0/docs/resources/compute_global_address) | resource |
 | [google_compute_global_forwarding_rule.http](https://registry.terraform.io/providers/hashicorp/google/4.22.0/docs/resources/compute_global_forwarding_rule) | resource |
 | [google_compute_global_forwarding_rule.https](https://registry.terraform.io/providers/hashicorp/google/4.22.0/docs/resources/compute_global_forwarding_rule) | resource |
-| [google_compute_http_health_check.default](https://registry.terraform.io/providers/hashicorp/google/4.22.0/docs/resources/compute_http_health_check) | resource |
 | [google_compute_target_http_proxy.default](https://registry.terraform.io/providers/hashicorp/google/4.22.0/docs/resources/compute_target_http_proxy) | resource |
 | [google_compute_target_https_proxy.default](https://registry.terraform.io/providers/hashicorp/google/4.22.0/docs/resources/compute_target_https_proxy) | resource |
 | [google_compute_url_map.default](https://registry.terraform.io/providers/hashicorp/google/4.22.0/docs/resources/compute_url_map) | resource |
@@ -76,7 +75,6 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_domain"></a> [domain](#input\_domain) | Domain of the service | `string` | `null` | no |
-| <a name="input_health_check"></a> [health\_check](#input\_health\_check) | Health check configuration | <pre>object({<br>    request_path       = string<br>    check_interval_sec = number<br>    timeout_sec        = number<br>  })</pre> | <pre>{<br>  "check_interval_sec": 5,<br>  "request_path": "/",<br>  "timeout_sec": 5<br>}</pre> | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of the service | `string` | n/a | yes |
 | <a name="input_network_endpoint_groups"></a> [network\_endpoint\_groups](#input\_network\_endpoint\_groups) | Network endpoint groups to create | `list(map(string))` | `[]` | no |
 | <a name="input_project"></a> [project](#input\_project) | Project where the Cloud Run resources are being created | `string` | `"null"` | no |
