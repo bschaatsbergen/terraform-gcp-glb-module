@@ -14,14 +14,9 @@ module "global_lb" {
   domain = var.domain
   network_endpoint_groups = [
     {
-      name              = "my-lb-endpoint-group"
-      cloud_run_service = google_cloud_run_service.example1.name
-      region            = google_cloud_run_service.example1.location
-    },
-    {
-      name              = "my-other-lb-endpoint-group"
-      cloud_run_service = google_cloud_run_service.example2.name
-      region            = google_cloud_run_service.example2.location
+      name              = "default-endpoint-group"
+      cloud_run_service = google_cloud_run_service.default.name
+      region            = google_cloud_run_service.default.location
     }
   ]
 
@@ -30,11 +25,11 @@ module "global_lb" {
 
 # Add the load balancer IP to the managed Cloud DNS zone
 resource "google_dns_record_set" "default" {
-  name = var.dns_record_set_name
-  type = var.dns_record_set_type
-  ttl  = var.ttl
+  name = "example.com."
+  type = "A"
+  ttl  = 60
 
-  managed_zone = google_dns_managed_zone.default.nam
+  managed_zone = google_dns_managed_zone.default.name
 
   rrdatas = [
     module.global_lb.ip_address
