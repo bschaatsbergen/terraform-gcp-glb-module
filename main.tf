@@ -55,7 +55,7 @@ resource "google_compute_backend_service" "default" {
   timeout_sec = "30"
 
   health_checks = [
-    google_compute_http_health_check.default.*.id
+    google_compute_http_health_check.default.id
   ]
 
   dynamic "backend" {
